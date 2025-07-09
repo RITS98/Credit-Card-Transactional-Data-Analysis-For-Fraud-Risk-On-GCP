@@ -32,4 +32,18 @@
 
 <img width="830" alt="image" src="https://github.com/user-attachments/assets/4d32f0a7-56f5-49d8-b3e0-a79fe81ab4af" />
 
-4.  
+### Creating Datasets and Tables in BigQuery
+
+1. Create a Dataset (which is basically a database or datawarehouse metaphorically)
+
+<img width="1568" alt="image" src="https://github.com/user-attachments/assets/9516aa3c-9fd2-4b2f-a86b-ed6d42ba44a0" />
+
+2. Create Cardholders external table in Bigquery
+
+<img width="999" alt="image" src="https://github.com/user-attachments/assets/7ecec57f-827f-4b37-8ab7-7a8572721a74" />
+
+3. Other tables with be created by Airflow if not present
+
+### Create a Airflow Instance
+
+
