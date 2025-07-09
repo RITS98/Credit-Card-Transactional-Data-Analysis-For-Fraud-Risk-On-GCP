@@ -1,5 +1,6 @@
 # Credit Card Transactional Data Analysis For Fraud Risk On GCP
 
+This project aims to analyze credit card transactional data to identify potential fraud risks using Google Cloud Platform (GCP) services. The solution leverages PySpark for data processing, Airflow for orchestration, and BigQuery for data storage and querying.
 
 ## Technology Used
 - Python
@@ -15,6 +16,18 @@
 ## Architecture Diagram
 
 ![Credit Fraud](https://github.com/user-attachments/assets/7b836bea-ba7e-4246-9811-06fa2538fc34)
+
+## Dataflow
+
+1. **Data Ingestion**: Credit card transaction data is uploaded to a Google Cloud Storage (GCS) bucket.
+2. **Data Processing**:
+   - A PySpark job is triggered to process the transaction data.
+   - The job reads the data from GCS, processes it, and writes the results to a BigQuery table.
+3. **Data Orchestration**: Apache Airflow (GCP Composer) orchestrates the workflow, managing the scheduling and execution of the PySpark job.
+4. **Data Storage**: Processed data is stored in BigQuery for further analysis and reporting.
+5. **Data Archiving**: Processed JSON files are moved to an archive folder in GCS for long-term storage.
+6. **Testing**: Unit tests are written using PyTest to ensure the correctness of the PySpark job.
+7. **CI/CD Pipeline**: GitHub Actions is used to automate testing and deployment of the Airflow DAG and PySpark job.
 
 ## Steps
 
@@ -63,6 +76,8 @@
 <img width="1687" alt="image" src="https://github.com/user-attachments/assets/97530068-aaf1-434e-a5f6-f854cd3a9c7b" />
 
 5. List of connections
+
+- Airflow connections are used to connect to external systems like GCS, BigQuery, etc. Below is the list of connections used in this project.
 
 <img width="995" alt="image" src="https://github.com/user-attachments/assets/2ef7d1f0-b6a1-4cfb-b27b-544e1ec9196d" />
 
