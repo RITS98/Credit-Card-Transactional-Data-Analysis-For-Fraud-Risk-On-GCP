@@ -62,6 +62,9 @@
 4. Below is the Airflow UI
 <img width="1687" alt="image" src="https://github.com/user-attachments/assets/97530068-aaf1-434e-a5f6-f854cd3a9c7b" />
 
+5. List of connections
+
+<img width="995" alt="image" src="https://github.com/user-attachments/assets/2ef7d1f0-b6a1-4cfb-b27b-544e1ec9196d" />
 
 ### Creating Dataproc Cluster
 
@@ -90,6 +93,152 @@
    - Wait a few minutes for the cluster to be provisioned.
 
 <img width="824" alt="image" src="https://github.com/user-attachments/assets/840ac888-9022-4259-99ea-2c804a13b5f7" />
+
+
+### CI/CD Pipeline (GitHub Actions)
+
+This project uses **GitHub Actions** to automate Continuous Integration (CI) and Continuous Deployment (CD) for different branches (`dev` and `main`). Below is a detailed breakdown of the workflow configuration.
+
+#### Trigger Conditions
+
+The workflow is triggered on **push events** to the following branches:
+
+```yaml
+on:
+  push:
+    branches:
+      - dev
+      - main
+```
+
+#### Job 1: Run Tests on Dev Branch (`dev`)
+
+##### Purpose:
+
+To run unit tests (specifically `test_transactions_processing.py`) when changes are pushed to the `dev` branch.
+
+##### Steps:
+
+1. **Checkout Code**
+
+   ```yaml
+   - name: Checkout Code
+     uses: actions/checkout@v3
+   ```
+
+   This step pulls your repository's code into the GitHub runner so the next steps can access it.
+
+2. **Set Up Python Environment**
+
+   ```yaml
+   - name: Set Up Python
+     uses: actions/setup-python@v3
+     with:
+       python-version: "3.11"
+   ```
+
+   It installs Python 3.11 so the testing can run in the expected Python environment.
+
+3. **Install Dependencies**
+
+   ```yaml
+   - name: Install Dependencies
+     run: |
+       pip install -r requirements.txt
+   ```
+
+   Installs all required Python packages listed in `requirements.txt`.
+
+4. **Run Pytest for Specific Test File**
+
+   ```yaml
+   - name: Run Pytest for `test_transactions_processing.py`
+     run: pytest tests/test_transactions_processing.py
+   ```
+
+   Executes only the `test_transactions_processing.py` file to validate transaction processing logic during development.
+
+
+#### Job 2: Deploy to Production (Main Branch Only)
+
+##### Purpose:
+
+When changes are merged into the `main` branch, this job automates deployment by uploading:
+
+* The PySpark job to Google Cloud Storage (GCS)
+* The Airflow DAG to Cloud Composer (Airflow on GCP)
+
+##### Steps:
+
+1. **Checkout Code**
+
+   ```yaml
+   - name: Checkout Code
+     uses: actions/checkout@v3
+   ```
+
+   Same as in the test job, this fetches the latest code.
+
+2. **Authenticate to Google Cloud Platform**
+
+   ```yaml
+   - name: Authenticate to GCP
+     uses: google-github-actions/auth@v1
+     with:
+       credentials_json: ${{ secrets.GCP_SA_KEY }}
+   ```
+
+   Authenticates using a GCP Service Account. The credentials are stored securely in GitHub Secrets as `GCP_SA_KEY`.
+
+3. **Setup Google Cloud SDK**
+
+   ```yaml
+   - name: Setup Google Cloud SDK
+     uses: google-github-actions/setup-gcloud@v1
+     with:
+       project_id: ${{ secrets.GCP_PROJECT_ID }}
+   ```
+
+   Installs and configures the `gcloud` CLI to work with the GCP project defined in `GCP_PROJECT_ID`.
+
+4. **Upload PySpark Job to GCS**
+
+   ```yaml
+   - name: Upload Spark Job to GCS
+     run: |
+       gsutil cp spark_job.py gs://credit-card-data-analysis-ritayan/spark_job/
+   ```
+
+   Uploads the PySpark job file (`spark_job.py`) to a GCS bucket where Dataproc can access it.
+
+5. **Upload Airflow DAG to Composer**
+
+   ```yaml
+   - name: Upload Airflow DAG to Composer
+     run: |
+       gcloud composer environments storage dags import \
+         --environment airflow-cluster \
+         --location us-east1 \
+         --source airflow_job.py
+   ```
+
+   Uploads the DAG file (`airflow_job.py`) into the Composer environment's DAGs folder so it can be scheduled and run in production.
+
+
+#### Secrets Used
+
+The workflow relies on GitHub Secrets for secure authentication:
+
+| Secret Name      | Description                            |
+| ---------------- | -------------------------------------- |
+| `GCP_SA_KEY`     | GCP Service Account credentials (JSON) |
+| `GCP_PROJECT_ID` | Google Cloud Project ID                |
+
+
+
+## Results
+
+
 
 
 
