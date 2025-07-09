@@ -46,4 +46,23 @@
 
 ### Create a Airflow Instance
 
+1. Go to GCP Composer and create a Airflow instance. Choose the latest version of airflow.
+
+<img width="486" alt="image" src="https://github.com/user-attachments/assets/76660116-6314-478f-af44-23ac71c5724a" />
+
+2. Click on `Create` button. It takes some time (around 10-15 minutes to create and load the instance)
+3. Upload the day python file by clickin on the `DAGs` link and then `OPEN DAGS FOLDER` option.
+
+<img width="1202" alt="image" src="https://github.com/user-attachments/assets/e4125620-191d-4f60-97fb-5dfd9bf01273" />
+
+<img width="862" alt="image" src="https://github.com/user-attachments/assets/72d4c2e0-b702-40f3-b3b9-8bad97fc5448" />
+
+<img width="783" alt="image" src="https://github.com/user-attachments/assets/6f7081c2-9860-48f7-99c8-452fcffea679" />
+
+4. Below is the Airflow UI
+<img width="1687" alt="image" src="https://github.com/user-attachments/assets/97530068-aaf1-434e-a5f6-f854cd3a9c7b" />
+
+
+
+
 
