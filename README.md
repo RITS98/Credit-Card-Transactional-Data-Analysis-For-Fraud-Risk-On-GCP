@@ -65,8 +65,31 @@
 
 ### Creating Dataproc Cluster
 
+1.  Enable IAM permissions (You need roles like Dataproc Admin, Compute Admin, Service Account User, Storage Admin)
+2.  Default Compute Engine Service Account must exist with appropriate permissions
+3.  Go to Dataproc
+    - Navigate to Dataproc page in the GCP Console.
 
+4. Click “Create Cluster”
+5. Choose the Cluster Type
+   - Standard (default) – for general use
+   - Single Node – for dev/testing
+   - High Availability – for production
 
+6. Configure the Cluster
+   - Cluster Name: e.g., my-dataproc-cluster
+   - Region: e.g., us-central1
+   - Zone: Optional, auto-selected from region 
+   - Cluster mode: Standard, HA, or Single Node
+
+7. Node Configuration
+   - Master Node: Machine type (e.g., n1-standard-2), disk size
+   - Worker Nodes: Number of workers, machine type, disk size
+
+7. Click “Create”
+   - Wait a few minutes for the cluster to be provisioned.
+
+<img width="824" alt="image" src="https://github.com/user-attachments/assets/840ac888-9022-4259-99ea-2c804a13b5f7" />
 
 
 
