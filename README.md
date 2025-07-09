@@ -264,5 +264,14 @@ The workflow relies on GitHub Secrets for secure authentication:
 
 <img width="1128" alt="image" src="https://github.com/user-attachments/assets/80be42ea-1955-4908-ab4c-0696022a2fd5" />
 
+7. After processing the json file is moved to archieve area.
+
+<img width="742" alt="image" src="https://github.com/user-attachments/assets/41ed92aa-6125-486b-9e64-be98d9991b83" />
+
+8. The transaction table is populated with the data.
+
+<img width="1058" alt="image" src="https://github.com/user-attachments/assets/95a7f443-7316-498a-81ba-ed7c910b7d66" />
+
+
 
 
