@@ -249,6 +249,22 @@ The workflow relies on GitHub Secrets for secure authentication:
 | `GCP_SA_KEY`     | GCP Service Account credentials (JSON) |
 | `GCP_PROJECT_ID` | Google Cloud Project ID                |
 
+**How to add Github Secrets ?**
+1. Navigate to the repository: Go to the main page of your GitHub repository. 
+2. Access Settings: Click on the "Settings" tab at the top of the repository. 
+3. Locate Secrets and Variables: In the left sidebar, scroll down and click on "Secrets and variables" under "Security".
+
+<img width="1344" alt="image" src="https://github.com/user-attachments/assets/30b7901f-2d40-47d8-8c05-380f80212828" />
+
+4. Choose Actions: Select "Actions" to manage secrets specifically for GitHub Actions workflows. 
+5. Create a New Secret: Click on "New repository secret".
+
+<img width="1170" alt="image" src="https://github.com/user-attachments/assets/8bd21113-3bc1-4d80-9c8f-bb4afbdcfeb3" />
+
+6. Name and Value: Enter a name for your secret (using all caps is a common convention) and then input the actual secret value. 
+7. Add the Secret: Click the "Add secret" button to save the secret. 
+
+<img width="1179" alt="image" src="https://github.com/user-attachments/assets/b3c026f7-2260-48e1-9b39-d67e6dbcafca" />
 
 
 ## Results
