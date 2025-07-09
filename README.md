@@ -238,8 +238,31 @@ The workflow relies on GitHub Secrets for secure authentication:
 
 ## Results
 
+1. DAGs in the Airflow Cluster
 
+<img width="1591" alt="image" src="https://github.com/user-attachments/assets/17585413-0587-420e-85e8-4aadbad1533e" />
 
+2. The pipeline
+
+<img width="1588" alt="image" src="https://github.com/user-attachments/assets/177dd714-fc85-4f9f-8f2a-a35a5dcffa4a" />
+
+3. Putting the transaction files in the transaction folder
+
+<img width="1205" alt="image" src="https://github.com/user-attachments/assets/ab349936-9943-43b2-a7b9-2c438d9241ce" />
+
+4. The spark is triggered and you can see the spark job id created using the uuid
+
+<img width="1106" alt="image" src="https://github.com/user-attachments/assets/ab20605c-8a56-4c3f-be32-0e61258741e5" />
+
+5. The spark job is running in the Dataproc Cluster
+
+<img width="1165" alt="image" src="https://github.com/user-attachments/assets/dfec75d6-5936-4e09-be32-ef80adf31b97" />
+
+6. The job is succeeded. 
+
+<img width="1146" alt="image" src="https://github.com/user-attachments/assets/9324174c-28e1-474d-a0a6-17d45193dd5a" />
+
+<img width="1128" alt="image" src="https://github.com/user-attachments/assets/80be42ea-1955-4908-ab4c-0696022a2fd5" />
 
 
 
